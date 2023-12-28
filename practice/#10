@@ -1,0 +1,61 @@
+using MyCompany;
+
+namespace MyCompany
+{
+    public record Worker(string FirstName,string LastName,string Position, int Salary);
+
+    public class Department
+    {
+        public string Name { get; set; }
+        public List<Worker> Workers { get; set; } = new List<Worker>();
+    }
+
+    public class Company
+    {
+        public string Name { get; set; }
+        public List<Department> Departments { get; set; } = new List<Department>();
+    }
+}
+
+
+class Program
+{
+    static void Main()
+    {
+        var worker1 = new Worker("John", "Doe", "Software Developer", 60000);
+        var worker2 = new Worker("Jane", "Smith", "Project Manager", 75000);
+        var worker3 = new Worker("Bob", "Johnson", "QA Engineer", 55000);
+
+        var developmentDepartment = new Department
+        {
+            Name = "Development",
+            Workers = { worker1, worker2 }
+        };
+
+        var qaDepartment = new Department
+        {
+            Name = "Quality Assurance",
+            Workers = { worker3 }
+        };
+
+        var myCompany = new Company
+        {
+            Name = "MyTech",
+            Departments = { developmentDepartment, qaDepartment }
+        };
+
+        Console.WriteLine("Company Information:");
+        Console.WriteLine($"Company Name: {myCompany.Name}");
+        Console.WriteLine("\nDepartments:");
+
+        foreach (var department in myCompany.Departments)
+        {
+            Console.WriteLine($"Department: {department.Name}");
+            Console.WriteLine("Workers: ");
+            foreach (var worker in department.Workers)
+            {
+                Console.WriteLine($"{worker.FirstName} {worker.LastName}, {worker.Position}, Salary: {worker.Salary}");
+            }
+        }
+    }
+}
