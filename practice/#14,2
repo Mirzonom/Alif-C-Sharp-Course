@@ -1,0 +1,29 @@
+using System;
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        var inventory = new List<(int ProductId, string ProductName, int Price)>
+            {
+                (1, "iPhone 13", 999),
+                (2, "MacBook Pro", 1999),
+                (3, "Apple Watch", 399)
+            };
+
+        var totalCost = CalculateTotalCost(inventory);
+
+        Console.WriteLine("Общая стоимость запасов: {0} долларов", totalCost);
+    }
+
+    static int CalculateTotalCost(List<(int ProductId, string ProductName, int Price)> inventory)
+    {
+        var totalCost = 0;
+
+        foreach (var item in inventory)
+        {
+            totalCost += item.Price;
+        }
+        return totalCost;
+    }
+}
