@@ -1,0 +1,27 @@
+using System;
+
+class Order
+{
+    public int OrderId { get; set; }
+    public string CustomerName { get; set; }
+    public string ProductName { get; set; }
+    public int Price { get; set; }
+}
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        var orders = new List<Order>
+            {
+                new Order { OrderId = 1, CustomerName = "Alex", ProductName = "iPhone 13", Price = 999 },
+                new Order { OrderId = 2, CustomerName = "Bob", ProductName = "MacBook Pro", Price = 1999 },
+                new Order { OrderId = 3, CustomerName = "Jack", ProductName = "Apple Watch", Price = 399 }
+            };
+
+        foreach (var order in orders)
+        {
+            Console.WriteLine("Заказ №{0}: {1} {2} за {3} долларов", order.OrderId, order.CustomerName, order.ProductName, order.Price);
+        }
+    }
+}
