@@ -1,0 +1,49 @@
+using System;
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        Student student = new Student("Alex", 20, 4);
+        Student student2 = new Student("Bob", 23, 3);
+        Student student3 = new Student("Jack", 18, 2);
+        Student student4 = new Student("Leo", 21, 5);
+
+        Student.PrintStudent(student);
+        Student.PrintStudent(student2);
+        Student.PrintStudent(student3);
+        Student.PrintStudent(student4);
+
+        Console.WriteLine("\nВсего студентов: {0}", Student.TotalStudents);
+
+    }
+
+    public class Student
+    {
+        public string Name { get; set; }
+        public int Age { get; set; }
+        public double GPA { get; set; }
+
+        static Student()
+        {
+            TotalStudents = 0;
+        }
+        public static int TotalStudents { get; set; }
+
+        public Student(string name, int age, double gpa)
+        {
+            this.Name = name;
+            this.Age = age;
+            this.GPA = gpa;
+
+            TotalStudents++;
+        }
+
+        public static void PrintStudent(Student student)
+        {
+            Console.WriteLine("Имя: {0}", student.Name);
+            Console.WriteLine("Возраст: {0}", student.Age);
+            Console.WriteLine("Средний балл: {0}\n", student.GPA);
+        }
+    }
+}
