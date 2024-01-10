@@ -1,0 +1,43 @@
+using System;
+
+public interface IVehicle
+{
+    double Speed { get; set; }
+    void StartEngine();
+}
+
+public class Car : IVehicle
+{
+    public double Speed { get; set; }
+
+    public void StartEngine()
+    {
+        Console.WriteLine("Engine started");
+    }
+}
+
+public class Bicycle : IVehicle
+{
+    public double Speed { get; set; }
+
+    public void StartEngine()
+    {
+        Console.WriteLine("Engine started");
+    }
+}
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        Car car = new Car();
+        car.Speed = 60;
+        Console.WriteLine($"Скорость: {car.Speed}");
+        car.StartEngine();
+
+        Bicycle bicycle = new Bicycle();
+        bicycle.Speed = 5;
+        Console.WriteLine($"Скорость: {bicycle.Speed}");
+        bicycle.StartEngine();
+    }
+}
