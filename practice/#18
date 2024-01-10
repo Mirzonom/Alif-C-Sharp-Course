@@ -1,0 +1,70 @@
+// Класс с публичными членами
+public class PublicClass
+{
+    public int PublicField = 10;
+
+    public void PublicMethod()
+    {
+        Console.WriteLine("Это публичный метод");
+    }
+}
+
+// Класс с закрытыми членами
+private class PrivateClass
+{
+    private int PrivateField = 20;
+
+    private void PrivateMethod()
+    {
+        Console.WriteLine("Это закрытый метод");
+    }
+}
+
+// Класс с защищенными членами
+protected class ProtectedClass
+{
+    protected int ProtectedField = 30;
+
+    protected void ProtectedMethod()
+    {
+        Console.WriteLine("Это защищенный метод");
+    }
+}
+
+// Класс с внутренними членами
+internal class InternalClass
+{
+    internal int InternalField = 40;
+
+    internal void InternalMethod()
+    {
+        Console.WriteLine("Это внутренний метод");
+    }
+}
+
+// Класс, использующий члены из других классов
+public class UsingMembers
+{
+    public void Main()
+    {
+        // Доступ к публичным членам
+        PublicClass publicClass = new PublicClass();
+        Console.WriteLine(publicClass.PublicField);
+        publicClass.PublicMethod();
+
+        // Доступ к закрытым членам невозможен
+        // PrivateClass privateClass = new PrivateClass();
+        // Console.WriteLine(privateClass.PrivateField);
+        // privateClass.PrivateMethod();
+
+        // Доступ к защищенным членам возможен из производных классов
+        ProtectedClass protectedClass = new ProtectedClass();
+        Console.WriteLine(protectedClass.ProtectedField);
+        protectedClass.ProtectedMethod();
+
+        // Доступ к внутренним членам возможен из любого класса в той же сборке
+        InternalClass internalClass = new InternalClass();
+        Console.WriteLine(internalClass.InternalField);
+        internalClass.InternalMethod();
+    }
+}
