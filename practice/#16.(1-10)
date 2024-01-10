@@ -1,0 +1,59 @@
+using System;
+
+abstract class Animal
+{
+    public abstract string Name { get; set; }
+    public abstract int Age { get; set; }
+    public abstract void MakeSound();
+    public void DisplayInfo()
+    {
+        Console.WriteLine($"Имя: {Name}");
+        Console.WriteLine($"Возраст: {Age}");
+        MakeSound();
+    }
+}
+
+class Lion : Animal
+{
+    public override string Name { get; set; }
+    public override int Age { get; set; }
+
+    public override void MakeSound()
+    {
+        Console.WriteLine("Лев рычит\n");
+    }
+    public string Color { get; set; }
+}
+
+class Elephant : Animal
+{
+    public override string Name { get; set; }
+    public override int Age { get; set; }
+    public override void MakeSound()
+    {
+        Console.WriteLine("Слон трубит\n");
+    }
+    public double LengthOfTusk { get; set; } 
+}
+
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        Lion lion = new Lion();
+        lion.Name = "Alex";
+        lion.Age = 18;
+        lion.MakeSound();
+        lion.DisplayInfo();
+        lion.Color = "Коричневый";
+
+        Elephant elephant = new Elephant();
+        elephant.Name = "Bob";
+        elephant.Age = 21;
+        elephant.MakeSound();
+        elephant.DisplayInfo();
+        elephant.LengthOfTusk = 4;
+    }
+
+}
