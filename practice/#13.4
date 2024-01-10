@@ -1,0 +1,32 @@
+using System;
+
+public static class StringExtensions
+{
+    public static int CountOccurrences(this string source, string substring)
+    {
+
+        int count = 0;
+        int index = 0;
+
+        while ((index = source.IndexOf(substring, index, StringComparison.OrdinalIgnoreCase)) != -1)
+        {
+            index += substring.Length;
+            count++;
+        }
+
+        return count;
+    }
+}
+
+class Program
+{
+    static void Main()
+    {
+        string mainString = "Салом, салом , салом";
+        string substringToSearch = "Салом";
+
+        int occurrences = mainString.CountOccurrences(substringToSearch);
+
+        Console.WriteLine($"Количество вхождений подстроки \"{substringToSearch}\" в строке: {occurrences}");
+    }
+}
