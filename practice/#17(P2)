@@ -1,0 +1,75 @@
+using System;
+
+public interface IMath
+{
+      int Add(int num1, int num2);
+      int Multiply(int num1, int num2);
+}
+
+
+public class Calculator : IMath
+{
+    public int Add(int num1, int num2)
+    {
+        int sum = num1 + num2;
+        Console.WriteLine(sum);
+        return sum;
+        
+    }
+
+    public int Multiply(int num1, int num2)
+    {
+        int sum = num1 / num2;
+        Console.WriteLine(sum);
+        return sum;
+    }
+}
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        Calculator calculator = new Calculator();
+        calculator.Add(2, 3);
+        calculator.Multiply(45,5);
+    }
+}
+
+/* Этот как по требованию дз, должно работать, просто у меня нету C# 11
+using System;
+
+public interface IMath
+{
+       static int Add(int num1, int num2);
+       static int Multiply(int num1, int num2);
+}
+
+
+public class Calculator : IMath
+{
+    public static int Add(int num1, int num2)
+    {
+        int sum = num1 + num2;
+        Console.WriteLine(sum);
+        return sum;
+        
+    }
+
+    public static int Multiply(int num1, int num2)
+    {
+        int sum = num1 / num2;
+        Console.WriteLine(sum);
+        return sum;
+    }
+}
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        Calculator calculator = new Calculator();
+        calculator.Add(2, 3);
+        calculator.Multiply(45,5);
+    }
+}
+*/
