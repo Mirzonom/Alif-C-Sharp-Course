@@ -1,0 +1,60 @@
+using System;
+
+public abstract class Animal
+{
+    public string Name { get; set; }
+    public int Age { get; set; }
+    public abstract void MakeSound();
+}
+
+public class Dog : Animal
+{
+    public string Breed { get; set; }
+
+    public override void MakeSound()
+    {
+        Console.WriteLine("Woof!");
+    }
+}
+
+public class Cat : Animal
+{
+    public string FurColor { get; set; }
+
+    public override void MakeSound()
+    {
+        Console.WriteLine("Meow!");
+    }
+}
+
+public class Bird : Animal
+{
+    public string Wingspan { get; set; }
+
+    public override void MakeSound()
+    {
+        Console.WriteLine("Tweet!");
+    }
+}
+
+class Program
+{
+
+    static void Main()
+    {
+        Animal dog = new Dog();
+        dog.Name = "Bob";
+        dog.Age = 5;
+        dog.MakeSound();
+
+        Animal cat = new Cat();
+        cat.Name = "Catty";
+        cat.Age = 3;
+        cat.MakeSound(); 
+
+        Animal bird = new Bird();
+        bird.Name = "Bir";
+        bird.Age = 1;
+        bird.MakeSound(); 
+    }
+}
