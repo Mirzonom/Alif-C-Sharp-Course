@@ -1,0 +1,57 @@
+using System;
+
+public class Student
+{
+    private string name;
+    private int age;
+    private double averageScore;
+
+    public Student(string name, int age, double averageScore)
+    {
+        this.name = name;
+        this.age = age;
+        this.averageScore = averageScore;
+    }
+
+    public string Name
+    {
+        get { return name; }
+        set { name = value; }
+    }
+
+    public int Age
+    {
+        get { return age; }
+        set
+        {
+            age = Math.Max(0, value);
+        }
+    }
+
+    public double AverageScore
+    {
+        get { return averageScore; }
+        set
+        {
+            averageScore = Math.Max(0, Math.Min(100, value));
+        }
+    }
+}
+
+class Program
+{
+    static void Main()
+    {
+        Student student1 = new Student("Иванов Иван Иванович", 20, 85);
+
+        Console.WriteLine("Имя студента: " + student1.Name);
+        Console.WriteLine("Возраст студента: " + student1.Age);
+        Console.WriteLine("Средний балл студента: " + student1.AverageScore);
+
+        // Попытка установить отрицательный возраст и балл
+        student1.Age = -10;
+        student1.AverageScore = -10;
+        Console.WriteLine("Возраст студента после изменений: " + student1.Age);
+        Console.WriteLine("Средний балл студента после изменений: " + student1.AverageScore);
+    }
+}
