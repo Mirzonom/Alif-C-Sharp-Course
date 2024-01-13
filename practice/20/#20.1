@@ -1,0 +1,41 @@
+using System;
+
+public abstract class Vehicle
+{
+    public string Name { get; set; }
+    public string Model{ get; set; }
+    public abstract void Drive();
+
+}
+
+public class MercedesBenz: Vehicle
+{
+    public override void Drive()
+    {
+        Console.WriteLine($"{Name} {Model} started driving") ;
+    }
+}
+
+public class BMW : Vehicle
+{
+    public override void Drive()
+    {
+        Console.WriteLine($"{Name} {Model} started driving");
+    }
+}
+
+class Program
+{
+    static void Main()
+    {
+        Vehicle mercedes = new MercedesBenz();
+        mercedes.Name = "Mercedes-Benz";
+        mercedes.Model = "W124";
+        mercedes.Drive();
+
+        Vehicle bmw = new BMW();
+        bmw.Name = "BMW";
+        bmw.Model = "E39";
+        bmw.Drive();
+    }
+}
