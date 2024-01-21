@@ -1,0 +1,19 @@
+class Program
+{
+    static void Main(string[] args)
+    {
+        static void GetTextLength(object obj)
+        {
+            if (obj is string str)
+            {
+                Console.WriteLine("Длина строки: {0}", str.Length);
+            }
+            else
+            {
+                Console.WriteLine("Это не строка");
+            }
+        }
+        GetTextLength(1); // Это не строка
+        GetTextLength("1"); // Длина строки : 1
+    }
+}
