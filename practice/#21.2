@@ -1,0 +1,22 @@
+class Program
+{
+    static void Main(string[] args)
+    {
+        Console.WriteLine("Введите температуру в градусах по Фаренгейту : ");
+        double temperature = Convert.ToDouble(Console.ReadLine());
+
+        if (temperature is <= 32)
+        {
+            Console.WriteLine("вода находится в состоянии льда");
+        }
+        if (temperature is >= 32 && temperature <= 212)
+        {
+            Console.WriteLine("вода в жидком состоянии");
+        }
+        if (temperature is > 212)
+        {
+            Console.WriteLine("вода находится в парообразном состоянии.");
+        }
+
+    }
+}
