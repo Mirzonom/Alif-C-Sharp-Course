@@ -1,0 +1,22 @@
+class Book
+{
+    public string Title { get; set; }
+    public string Author { get; set; }
+
+    public (string Title, string Author) Deconstructing()
+    {
+        return (this.Title, this.Author);
+    }
+}
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        Book book = new Book { Title = "Точикон", Author = "Бобочон Гафуров" };
+
+        (string title, string author) = book.Deconstructing();
+
+        Console.WriteLine($"Title: {title}, Author: {author}");
+    }
+}
