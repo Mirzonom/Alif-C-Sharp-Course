@@ -1,0 +1,21 @@
+class MyCustomException : Exception
+{
+    public MyCustomException(string message) : base(message)
+    {
+    }
+}
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        try
+        {
+            throw new MyCustomException("Это мое пользовательское исключение");
+        }
+        catch (MyCustomException e)
+        {
+            Console.WriteLine("Произошла ошибка: {0}", e.Message);
+        }
+    }
+}
