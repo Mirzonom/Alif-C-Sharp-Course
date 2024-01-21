@@ -1,0 +1,9 @@
+class Program
+{
+    static void Main(string[] args)
+    {
+        (string, int) GetTuple() => ("Inom", 21);
+        (string Name, int Age) = GetTuple();
+        Console.WriteLine(GetTuple()); // Inom, 21
+    }
+}
