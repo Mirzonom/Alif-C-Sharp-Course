@@ -1,0 +1,30 @@
+using System;
+
+namespace Mario
+{
+    public class PlayerState
+    {
+        public int Health { get; set; }
+        public int Coins { get; set; }
+    }
+
+    public class PlayerBehavior
+    {
+        public PlayerState State { get; set; }
+
+        public void Attack()
+        {
+            // ...
+        }
+
+        public void Move()
+        {
+            // ...
+        }
+
+        public void PickUpCoin()
+        {
+            // ...
+        }
+    }
+}
