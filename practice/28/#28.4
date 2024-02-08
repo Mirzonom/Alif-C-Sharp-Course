@@ -1,0 +1,60 @@
+using System;
+using System.Collections.Generic;
+
+class Program
+{
+    static void Main()
+    {
+        // Создаем очередь клиентов
+        Queue<string> customerQueue = new Queue<string>();
+
+        // Добавляем клиентов в очередь
+        EnqueueCustomer(customerQueue, "Клиент 1");
+        EnqueueCustomer(customerQueue, "Клиент 2");
+        EnqueueCustomer(customerQueue, "Клиент 3");
+
+        // Выводим текущее состояние очереди
+        DisplayQueue(customerQueue);
+
+        // Обслуживаем клиентов
+        ServeCustomer(customerQueue);
+        ServeCustomer(customerQueue);
+
+        // Выводим обновленное состояние очереди
+        DisplayQueue(customerQueue);
+
+        Console.ReadLine();
+    }
+
+    // Метод для добавления клиента в очередь
+    static void EnqueueCustomer(Queue<string> queue, string customer)
+    {
+        Console.WriteLine($"Добавлен клиент: {customer}");
+        queue.Enqueue(customer);
+    }
+
+    // Метод для обслуживания клиента (удаление из очереди)
+    static void ServeCustomer(Queue<string> queue)
+    {
+        if (queue.Count > 0)
+        {
+            string servedCustomer = queue.Dequeue();
+            Console.WriteLine($"Обслужен клиент: {servedCustomer}");
+        }
+        else
+        {
+            Console.WriteLine("Очередь пуста. Нет клиентов для обслуживания.");
+        }
+    }
+
+    // Метод для вывода текущего состояния очереди
+    static void DisplayQueue(Queue<string> queue)
+    {
+        Console.WriteLine("Текущее состояние очереди:");
+        foreach (var customer in queue)
+        {
+            Console.WriteLine(customer);
+        }
+        Console.WriteLine();
+    }
+}
