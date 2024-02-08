@@ -1,0 +1,33 @@
+using System;
+using System.Collections.Generic;
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        // Создаем список имен
+        List<string> names = new List<string>();
+
+        // Добавляем имена
+        names.Add("Bob");
+        names.Add("Alex");
+        names.Add("Mike");
+
+        // Отображаем список
+        Console.WriteLine("Список имен:");
+        foreach (string name in names)
+        {
+            Console.WriteLine(name);
+        }
+
+        // Удаляем имя
+        names.Remove("Bob");
+
+        // Отображаем список после удаления
+        Console.WriteLine("\nСписок имен после удаления:");
+        foreach (string name in names)
+        {
+            Console.WriteLine(name);
+        }
+    }
+}
