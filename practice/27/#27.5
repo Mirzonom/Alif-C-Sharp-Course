@@ -1,0 +1,32 @@
+using System;
+using System.Collections;
+
+class Program
+{
+    static void Main()
+    {
+        // Пример использования функции поиска в списке
+        ArrayList myList = new ArrayList { 1, 2, 3, 4, 5 };
+
+        int searchElement = 3;
+
+        bool foundWithIndexOf = ContainsElementUsingIndexOf(myList, searchElement);
+        bool foundWithContains = ContainsElementUsingContains(myList, searchElement);
+
+        Console.WriteLine($"Using IndexOf: Element {searchElement} found - {foundWithIndexOf}");
+        Console.WriteLine($"Using Contains: Element {searchElement} found - {foundWithContains}");
+    }
+
+    static bool ContainsElementUsingIndexOf(IList list, object searchElement)
+    {
+        // Используем метод IndexOf для поиска элемента в списке
+        int index = list.IndexOf(searchElement);
+        return index != -1;
+    }
+
+    static bool ContainsElementUsingContains(IList list, object searchElement)
+    {
+        // Используем метод Contains для проверки наличия элемента в списке
+        return list.Contains(searchElement);
+    }
+}
