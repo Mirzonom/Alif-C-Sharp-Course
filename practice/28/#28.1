@@ -1,0 +1,63 @@
+using System;
+
+class MyArray
+{
+    private int[,] array;
+
+    public MyArray(int rows, int columns)
+    {
+        array = new int[rows, columns];
+    }
+
+    // Индексатор для доступа к элементам массива
+    public int this[int row, int column]
+    {
+        get
+        {
+            if (IsValidIndex(row, column))
+            {
+                return array[row, column];
+            }
+            else
+            {
+                Console.WriteLine("Invalid index!");
+                return -1; // Возвращаем значение по умолчанию или выбрасываем исключение
+            }
+        }
+        set
+        {
+            if (IsValidIndex(row, column))
+            {
+                array[row, column] = value;
+            }
+            else
+            {
+                Console.WriteLine("Invalid index!");
+                // Можно выбросить исключение или проигнорировать операцию
+            }
+        }
+    }
+
+    private bool IsValidIndex(int row, int column)
+    {
+        return row >= 0 && row < array.GetLength(0) && column >= 0 && column < array.GetLength(1);
+    }
+}
+
+class Program
+{
+    static void Main()
+    {
+        MyArray myArray = new MyArray(3, 4);
+
+        // Пример использования индексатора для установки и получения значений
+        myArray[0, 0] = 1;
+        myArray[1, 2] = 5;
+
+        Console.WriteLine(myArray[0, 0]); // Выводит 1
+        Console.WriteLine(myArray[1, 2]); // Выводит 5
+
+        // Попытка доступа к недопустимому индексу
+        Console.WriteLine(myArray[4, 2]); // Выводит "Invalid index!" и -1 (значение по умолчанию)
+    }
+}
