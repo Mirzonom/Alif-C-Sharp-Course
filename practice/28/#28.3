@@ -1,0 +1,32 @@
+using System;
+using System.Collections.Generic;
+
+class Program
+{
+    static void Main()
+    {
+        // Создаем словарь
+        Dictionary<string, string> contacts = new Dictionary<string, string>();
+
+        // Добавляем контакты
+        contacts.Add("Bob", "+992-92-777-77-77");
+        contacts.Add("Max", "+992-92-888-88-88");
+
+        // Получаем номер телефона
+        string searchName = contacts["Max"];
+        Console.WriteLine(searchName); 
+
+        // Удаляем контакт
+        contacts.Remove("Bob");
+
+        // Проверяем, существует ли контакт
+        if (contacts.ContainsKey("Max"))
+        {
+            Console.WriteLine("Max есть в списке");
+        }
+        else
+        {
+            Console.WriteLine("Max нет в списке");
+        }
+    }
+}
