@@ -1,0 +1,51 @@
+using System;
+using System.Collections.Concurrent;
+using System.Threading;
+using System.Threading.Tasks;
+
+
+
+class Program
+{
+    static BlockingCollection<int> fibonacciQueue = new BlockingCollection<int>();
+
+    static void Main()
+    {
+        int count = 10;
+
+        // Запускаем два потока: один для генерации чисел Фибоначчи, другой для их вывода
+        Task producerTask = Task.Run(() => GenerateFibonacciNumbers(count));
+        Task consumerTask = Task.Run(() => ConsumeFibonacciNumbers());
+
+        Task.WaitAll(producerTask, consumerTask);
+
+
+        static void GenerateFibonacciNumbers(int count)
+        {
+            int a = 0, b = 1;
+
+            for (int i = 0; i < count; i++)
+            {
+                fibonacciQueue.Add(a); // Добавляем число в очередь
+
+                int temp = a;
+                a = b;
+                b = temp + b;
+
+                // Ждем некоторое время (можно использовать Thread.Sleep) для имитации работы
+                Thread.Sleep(500);
+            }
+
+            // После завершения генерации чисел, закрываем очередь
+            fibonacciQueue.CompleteAdding();
+        }
+
+        static void ConsumeFibonacciNumbers()
+        {
+            foreach (var number in fibonacciQueue.GetConsumingEnumerable())
+            {
+                Console.WriteLine($"Получено число Фибоначчи: {number}");
+            }
+        }
+    }
+}
