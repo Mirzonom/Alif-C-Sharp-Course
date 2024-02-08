@@ -1,0 +1,18 @@
+using System.Collections;
+
+class Program
+{
+    public static void Main()
+    {
+        Dictionary<int, string> myDictionary = new();
+        myDictionary.Add(0, "Alif Academy");
+        myDictionary.Add(1, "Course");
+        myDictionary.Add(2, "C");
+        myDictionary.Add(3, "#");
+        
+        foreach(var i in myDictionary)
+        {
+            Console.WriteLine($"Key : {i.Key}, Value: {i.Value}");
+        }
+    }
+}
