@@ -1,0 +1,56 @@
+using System;
+using System.Collections;
+
+class Program
+{
+    static void Main()
+    {
+        // Создаем SortedList для хранения книг
+        SortedList<string, string> booksList = new SortedList<string, string>();
+
+        // Добавляем книги в список
+        AddBook(booksList, "123456", "Программирование на C#");
+        AddBook(booksList, "789012", "Основы алгоритмов");
+        AddBook(booksList, "345678", "Дизайн паттерны");
+
+        // Выводим список книг
+        Console.WriteLine("Список книг:");
+        DisplayBooks(booksList);
+
+        // Удаляем книгу по ISBN
+        RemoveBook(booksList, "789012");
+
+        // Выводим обновленный список книг
+        Console.WriteLine("\nСписок книг после удаления:");
+        DisplayBooks(booksList);
+    }
+
+    // Метод для добавления книги в SortedList
+    static void AddBook(SortedList<string, string> booksList, string isbn, string title)
+    {
+        booksList.Add(isbn, title);
+    }
+
+    // Метод для удаления книги из SortedList по ISBN
+    static void RemoveBook(SortedList<string, string> booksList, string isbn)
+    {
+        if (booksList.ContainsKey(isbn))
+        {
+            booksList.Remove(isbn);
+            Console.WriteLine($"Книга с ISBN {isbn} удалена.");
+        }
+        else
+        {
+            Console.WriteLine($"Книга с ISBN {isbn} не найдена.");
+        }
+    }
+
+    // Метод для вывода списка книг
+    static void DisplayBooks(SortedList<string, string> booksList)
+    {
+        foreach (var book in booksList)
+        {
+            Console.WriteLine($"ISBN: {book.Key}, Название: {book.Value}");
+        }
+    }
+}
