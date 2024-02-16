@@ -1,0 +1,36 @@
+class Program
+{
+    static void Main()
+    {
+        Stack<int> stack = new Stack<int>();
+        stack.Push(1);
+        stack.Push(2);
+        stack.Push(3);
+
+        ReverseStack(stack);
+
+        Console.WriteLine(stack.Pop()); // Выводит 3
+        Console.WriteLine(stack.Pop()); // Выводит 2
+        Console.WriteLine(stack.Pop()); // Выводит 1
+
+
+        static void ReverseStack<T>(Stack<T> stack)
+        {
+            // Создаем вспомогательный стек.
+            Stack<T> tempStack = new Stack<T>();
+
+            // Перемещаем все элементы из исходного стека во вспомогательный.
+            while (stack.Count > 0)
+            {
+                tempStack.Push(stack.Pop());
+            }
+
+            // Перемещаем все элементы из вспомогательного стека обратно в исходный.
+            while (tempStack.Count > 0)
+            {
+                stack.Push(tempStack.Pop());
+            }
+        }
+
+    }
+}
