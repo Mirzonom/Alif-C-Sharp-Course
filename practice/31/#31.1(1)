@@ -1,0 +1,43 @@
+using System;
+
+[AttributeUsage(AttributeTargets.Class, Inherited = false, AllowMultiple = false)]
+sealed class LoggerAttribute : Attribute
+{
+    public string LoggerName { get; }
+
+    public LoggerAttribute(string loggerName)
+    {
+        LoggerName = loggerName;
+    }
+}
+
+[Logger("FileLogger")]
+class MyClass1
+{
+    // Код класса
+}
+
+[Logger("ConsoleLogger")]
+class MyClass2
+{
+    // Код класса
+}
+
+class Program
+{
+    static void Main()
+    {
+        var class1Attributes = typeof(MyClass1).GetCustomAttributes(typeof(LoggerAttribute), false);
+        var class2Attributes = typeof(MyClass2).GetCustomAttributes(typeof(LoggerAttribute), false);
+
+        foreach (LoggerAttribute attribute in class1Attributes)
+        {
+            Console.WriteLine($"Logger for MyClass1: {attribute.LoggerName}");
+        }
+
+        foreach (LoggerAttribute attribute in class2Attributes)
+        {
+            Console.WriteLine($"Logger for MyClass2: {attribute.LoggerName}");
+        }
+    }
+}
