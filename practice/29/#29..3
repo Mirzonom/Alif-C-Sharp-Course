@@ -1,0 +1,48 @@
+using System.Collections;
+
+class Program
+{
+    static void Main()
+    {
+        Hashtable animalHashtable = new Hashtable();
+
+        // Добавляем животных
+        AddAnimal(animalHashtable, "Cat", "Meow");
+        AddAnimal(animalHashtable, "Dog", "Woof");
+        AddAnimal(animalHashtable, "Cow", "Moo");
+
+        // Выводим звуки животных
+        Console.WriteLine("Animal Sounds:");
+        PrintAnimalSound(animalHashtable, "Cat");
+        PrintAnimalSound(animalHashtable, "Dog");
+        PrintAnimalSound(animalHashtable, "Cow");
+
+        // Удаляем животное
+        RemoveAnimal(animalHashtable, "Dog");
+
+        // Пытаемся вывести звук удаленного животного
+        Console.WriteLine("\nAnimal Sounds after removing Dog:");
+        PrintAnimalSound(animalHashtable, "Dog"); // Ошибка не произойдет, так как "Dog" удален
+
+
+        static void AddAnimal(Hashtable hashtable, string animal, string sound)
+        {
+            // Добавляем животное и его звук в Hashtable
+            hashtable.Add(animal, sound);
+        }
+
+        static void RemoveAnimal(Hashtable hashtable, string animal)
+        {
+            // Удаляем животное из Hashtable
+            hashtable.Remove(animal);
+        }
+
+        static void PrintAnimalSound(Hashtable hashtable, string animal)
+        {
+            // Выводим звук животного из Hashtable
+            Console.WriteLine($"{animal}: {(hashtable.ContainsKey(animal) ? hashtable[animal] : "Not found")}");
+        }
+    }
+}
+
+
