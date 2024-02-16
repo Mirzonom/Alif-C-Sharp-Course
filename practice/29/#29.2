@@ -1,0 +1,18 @@
+using System.Collections;
+
+class Program
+{
+    static void Main()
+    {
+        ArrayList myArrayList = new();
+        myArrayList.Add("Alex");
+        myArrayList.Add(21);
+        myArrayList.Add(5);
+
+        Console.WriteLine("Student Info : ");
+        foreach (object i in myArrayList)
+        {
+            Console.WriteLine(i);
+        }
+    }
+}
